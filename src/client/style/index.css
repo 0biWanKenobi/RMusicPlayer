@@ -1,0 +1,123 @@
+body {
+  background-color: #EDEDED;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  cursor: default;
+}
+
+h4 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 8pt;
+  font-weight: 400;
+  cursor: default;
+}
+
+h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 13pt;
+  font-weight: 300;
+  color: white;
+  cursor: default;
+}
+
+#scrollable-list-wrapper {
+  max-height: 384px;
+  overflow-y: auto;
+}
+
+.controls svg:nth-child(2) {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+#play {
+  padding: 0 3px;
+  width: 200px;
+  height: 200px;
+  enable-background: new 0 0 25 25;
+}
+#play g {
+  stroke: #0a51e9;
+  stroke-width: 1;
+  stroke-miterlimit: 10;
+}
+#play g path {
+  fill: #0a51e9;
+}
+
+#play:hover {
+  cursor: pointer;
+}
+#play:hover g {
+  stroke: #8F4DA9;
+  cursor: pointer;
+}
+#play:hover g path {
+  fill: #9b59b6;
+  cursor: pointer;
+}
+
+.step-backward {
+  width: 200px;
+  height: 150px;
+  enable-background: new 0 0 25 25;
+  margin-bottom: 5px;
+}
+.step-backward g polygon {
+  fill: #0a51e9;
+}
+
+.step-foreward {
+  width: 200px;
+  height: 150px;
+  enable-background: new 0 0 25 25;
+  margin-bottom: 5px;
+}
+.step-foreward g polygon {
+  fill: #0a51e9;
+}
+
+#pause {
+  enable-background: new 0 0 25 25;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+}
+#pause rect {
+  fill: #0a51e9;
+}
+
+#pause:hover rect {
+  fill: #8F4DA9;
+}
+
+.step-backward g polygon:hover, .step-foreward g polygon:hover {
+  fill: #EF6DBC;
+  cursor: pointer;
+}
+
+#skip {
+  float: right;
+  margin-top: 10px;
+}
+#skip p {
+  color: #2980b9;
+}
+#skip p:hover {
+  color: #e74c3c;
+  cursor: pointer;
+}
+
+.expend {
+  padding: 0.5px;
+  cursor: pointer;
+}
+.expend svg:hover g polygon {
+  fill: #EF6DBC;
+}/*# sourceMappingURL=index.css.map */
