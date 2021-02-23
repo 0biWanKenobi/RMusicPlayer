@@ -5,6 +5,6 @@ import 'package:get_it/get_it.dart';
 final locator = GetIt.instance;
 
 void setup() {
-  locator.registerLazySingleton(() => RadioControlService());
+  locator.registerLazySingleton(() => RadioControlService(false));
   locator.registerLazySingleton(() => RemoteDeviceService());
 }
