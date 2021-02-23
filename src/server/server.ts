@@ -18,7 +18,7 @@ udpSocket.on('listening', () => {
 udpSocket.on('message', (msg: Uint8Array, rinfo: {address: string, family: string, port: number, size: number}) => {
     console.log(`Received UDP message "${msg.toString()}" from ${rinfo.address}:${rinfo.port}`);
 
-    udpSocket.send('message', 8085, rinfo.address)
+    udpSocket.send('remote_radio', 8085, rinfo.address)
   });
 
 udpSocket.bind(8082);
