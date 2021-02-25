@@ -10,8 +10,9 @@
     onPlayClick();
     });
 
-    socket.on('play_channel', (args) => {
-    onPlayClick();
+    socket.on('play_channel', (args) => {        
+        var radioStation = JSON.parse(args);
+        onPlayChannel(radioStation);
     });
 
     socket.on('pause', (_) => {

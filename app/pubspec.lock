@@ -166,7 +166,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.2"
+    version: "0.15.0"
   flutter_riverpod:
     dependency: transitive
     description:
@@ -248,7 +248,7 @@ packages:
       name: io
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.4"
+    version: "0.3.5"
   js:
     dependency: transitive
     description:

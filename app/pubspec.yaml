@@ -16,9 +16,9 @@ dependencies:
   cached_network_image: ^2.5.0
   cupertino_icons: ^1.0.0
   either_option: ^1.0.6
-  flutter_hooks: ^0.13.2
+  flutter_hooks: ^0.15.0
   get_it: ^5.0.6
-  hooks_riverpod: ^0.12.0
+  hooks_riverpod: ^0.12.4
   http: ^0.12.2
   local_ip: ^0.0.2
   udp: ^3.0.3
@@ -29,3 +29,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/default_header_image.jpg

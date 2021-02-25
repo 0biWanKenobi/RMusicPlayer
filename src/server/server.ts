@@ -3,9 +3,9 @@ import bodyParser from 'body-parser';
 import http from 'http'
 import dgram from 'dgram'
 import path from 'path'
-import { getAllRadioStations } from "./controllers/radio";
+import { getAllRadioStations, setLastPlayed } from "./controllers/radio";
 import { getIpAddress } from './controllers/network';
-
+import { RadioStation } from './models/radio_models'
 
 //***** DGRAM UDP DISCOVERY */
 const udpSocket = dgram.createSocket('udp4');
@@ -45,8 +45,11 @@ app.post('/play', (_,res) => {
     res.status(200).send();
 })
 
-app.post('/play_channel', (req,res) => {
-    io.emit('play_channel', req.body); 
+app.post('/play_channel', async (req,res) => {
+
+    const radioStation = JSON.parse(req.body ?? '{}');
+    io.emit('play_channel', req.body);
+    await setLastPlayed(radioStation);
     res.status(200).send();
 })
 

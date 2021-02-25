@@ -1,33 +1,36 @@
 {
-    "shoutcast": [
-        {
-            "radio_name": "Radio 1",
-            "image": "assets/radio_1.jpg",
-            "id": "radio_1",
-            "shoutcast_url": "http://icestreaming.rai.it/1.mp3",
-            "format": "audio/mp3"
-        },
-        {
-            "radio_name": "Radio 2",
-            "image": "assets/radio_2.jpg",
-            "id": "radio_2",
-            "shoutcast_url": "http://icestreaming.rai.it/2.mp3",
-            "format": "audio/mp3"
-        },
-        {
-            "radio_name": "Radio 3",
-            "image": "assets/radio_3.jpg",
-            "id": "radio_3",
-            "shoutcast_url": "http://icestreaming.rai.it/3.mp3",
-            "format": "audio/mp3"
-        }
-    ],
-    "last_played": {
-        "radio_name": "Radio 1",
-            "image": "assets/radio_1.jpg",
-            "id": "radio_1",
-            "shoutcast_url": "http://icestreaming.rai.it/1.mp3",
-            "format": "audio/mp3",
-            "program_name": ""
-    }
+	"shoutcast": [
+		{
+			"radio_name": "Radio 1",
+			"image": "assets/radio_1.jpg",
+			"image_flag": "assets/radio_1_flag.png",
+			"id": "radio_1",
+			"shoutcast_url": "http://icestreaming.rai.it/1.mp3",
+			"format": "audio/mp3"
+		},
+		{
+			"radio_name": "Radio 2",
+			"image": "assets/radio_2.jpg",
+			"image_flag": "assets/radio_2_flag.png",
+			"id": "radio_2",
+			"shoutcast_url": "http://icestreaming.rai.it/2.mp3",
+			"format": "audio/mp3"
+		},
+		{
+			"radio_name": "Radio 3",
+			"image": "assets/radio_3.jpg",
+			"image_flag": "assets/radio_3_flag.png",
+			"id": "radio_3",
+			"shoutcast_url": "http://icestreaming.rai.it/3.mp3",
+			"format": "audio/mp3"
+		}
+	],
+	"last_played": {
+		"radio_name": "Radio 3",
+		"image": "assets/radio_3.jpg",
+		"image_flag": "assets/radio_3_flag.png",
+		"id": "radio_3",
+		"shoutcast_url": "http://icestreaming.rai.it/3.mp3",
+		"format": "audio/mp3"
+	}
 }

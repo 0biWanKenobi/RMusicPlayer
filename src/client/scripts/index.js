@@ -13,16 +13,23 @@ const onPlayClick = function() {
 }
 
 const onPlayChannel = function(channel) {
+	let player = $("#music-source");	
+	player
+		.attr({src: channel.shoutcast_url, type: channel.format})
+		.detach()
+		.appendTo($("#music"));
 	music.pause();
-	$("#music-source").attr({src: channel.shoutcast_url, type: channel.format});
+	music.load();
 	updateChannelInfo(channel);
-	music.play();
+	music.oncanplaythrough = onPlayClick();
 }
 
 const updateChannelInfo = function(info){
 	$("#radio-name").html(info.radio_name);
 	$("#program-name").html(info.program_name);
 	$("#radio-logo").attr("src", info.image);
+	$("#station-list li").removeClass('active');
+	$(`#${info.id}`).addClass('active');
 }
 
 playButton.onclick = onPlayClick;

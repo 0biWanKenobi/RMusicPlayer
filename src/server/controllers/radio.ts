@@ -1,9 +1,20 @@
-import {readJson} from '../common/json-load'
+import {readJson, writeJson} from '../common/json-load'
+import { PlayList, RadioStation } from '../models/radio_models';
 import streamTitle from './radio_metadata';
+import path from 'path';
 
-export async function getAllRadioStations() {
-    const radioStations = await readJson('../static/radio-stations.json');
+const _jsonConfigPath = '../static/radio-stations.json';
+
+export async function getAllRadioStations() : Promise<PlayList> {
+    const radioStations = await readJson(_jsonConfigPath);
     return radioStations;
+}
+
+export async function setLastPlayed(lastPlayed: RadioStation) :Promise<void>{
+    const radioStations = await getAllRadioStations();
+    radioStations.last_played = lastPlayed;
+    const savePath = path.join(__dirname, _jsonConfigPath)
+    await writeJson(savePath, radioStations);
 }
 
 
