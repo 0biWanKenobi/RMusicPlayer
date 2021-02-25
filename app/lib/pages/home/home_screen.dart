@@ -52,16 +52,10 @@ class HomeScreen extends StatelessWidget {
 }
 
 final _headerImageProvider = Provider<String>((ref) {
-  final radioList = ref.watch(radioListProvider).data?.value;
-  final userSelectedImage = ref.watch(userSelectedStationImageProvider).state;
-  if (radioList == null || radioList.isLeft)
-    return userSelectedImage ?? Header.defaultImage;
-  return userSelectedImage ??
-      radioList.fold<String>((_) => Header.defaultImage,
-          (playlist) => playlist.lastPlayed.wideImage);
+  final lastRadioImage =
+      ref.watch(lastPlayedRadioProvider)?.radioStation?.wideImage;
+  return lastRadioImage ?? Header.defaultImage;
 });
-
-final userSelectedStationImageProvider = StateProvider<String>((_) => null);
 
 class Header extends HookWidget {
   static const defaultImage = 'assets/default_header_image.jpg';

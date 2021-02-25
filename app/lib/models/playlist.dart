@@ -1,8 +1,9 @@
 import 'package:app/models/radiostation.dart';
+import 'package:app/models/radiostation_x.dart';
 
 class PlayList {
   final List<RadioStation> radioStations;
-  final RadioStation lastPlayed;
+  final RadioStationX lastPlayed;
 
   PlayList(this.radioStations, this.lastPlayed);
 
@@ -10,5 +11,8 @@ class PlayList {
       : radioStations = (data['shoutcast'] as List)
             .map((radioStation) => RadioStation.fromJson(radioStation))
             .toList(),
-        lastPlayed = RadioStation.fromJson(data['last_played']);
+        lastPlayed =
+            data.containsKey('last_played') && data['last_played'] != null
+                ? RadioStationX.fromJson(data['last_played'])
+                : null;
 }

@@ -1,6 +1,7 @@
 import 'package:app/models/radiostation.dart';
-import 'package:app/pages/home/home_screen.dart';
-import 'package:app/providers/radio_control_provider.dart';
+import 'package:app/models/radiostation_x.dart';
+import 'package:app/providers/radio_control_provider.dart'
+    show radioControlProvider, userSelectedRadioProvider;
 import 'package:app/providers/remote_device_ip_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -37,9 +38,11 @@ class _RadioListWidget extends HookWidget {
     final radioListAsync = useProvider(radioListProvider);
     final radioService = useProvider(radioControlProvider);
 
-    Future<void> _playRadio(BuildContext context, RadioStation radio) async {
-      context.read(userSelectedStationImageProvider).state = radio.wideImage;
-      await radioService.playChannel(radio);
+    Future<void> _playRadio(
+        BuildContext context, RadioStation radio, int listIndex) async {
+      final radioStationX = RadioStationX(radio, listIndex);
+      context.read(userSelectedRadioProvider).state = radioStationX;
+      await radioService.playChannel(radioStationX);
     }
 
     return radioListAsync.map(
@@ -61,7 +64,8 @@ class _RadioListWidget extends HookWidget {
                     ),
                     title: Text(radio.radioName),
                     trailing: FlatButton(
-                      onPressed: () async => await _playRadio(context, radio),
+                      onPressed: () async =>
+                          await _playRadio(context, radio, index),
                       child: Icon(Icons.play_arrow),
                     ),
                   );

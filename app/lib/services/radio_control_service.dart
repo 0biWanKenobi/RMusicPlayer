@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:app/models/api_error.dart';
 import 'package:app/models/playlist.dart';
-import 'package:app/models/radiostation.dart';
+import 'package:app/models/radiostation_x.dart';
 import 'package:either_option/either_option.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
@@ -45,7 +45,7 @@ class RadioControlService extends StateNotifier<bool> {
     }
   }
 
-  Future<Either<ApiError, bool>> playChannel(RadioStation radioStation) async {
+  Future<Either<ApiError, bool>> playChannel(RadioStationX radioStation) async {
     try {
       final body = json.encode(radioStation);
       final response =
@@ -76,7 +76,7 @@ class RadioControlService extends StateNotifier<bool> {
       return Right(PlayList.fromJson(json.decode(response.body)));
     } catch (e) {
       return Left(ApiError('Eccezione in recupero playlist',
-          'RadioControlService.getPlaylist: status ${e.message}'));
+          'RadioControlService.getPlaylist: status $e'));
     }
   }
 }

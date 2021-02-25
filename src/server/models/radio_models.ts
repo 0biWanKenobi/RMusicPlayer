@@ -17,11 +17,21 @@ export class RadioStation {
     }
 }
 
+export class RadioStationX{
+    listIndex: number;
+    radioStation: RadioStation;
+
+    constructor(radioStation: RadioStation, listIndex: number ){
+        this.listIndex = listIndex;
+        this.radioStation = radioStation;
+    }
+}
+
 export class PlayList {
     shoutcast: RadioStation[];
-    last_played: RadioStation;
+    last_played: RadioStationX;
 
-    constructor(shoutcast: RadioStation[], last_played: RadioStation){
+    constructor(shoutcast: RadioStation[], last_played: RadioStationX){
         this.shoutcast = shoutcast;
         this.last_played = last_played;
     }

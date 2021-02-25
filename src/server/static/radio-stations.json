@@ -26,11 +26,14 @@
 		}
 	],
 	"last_played": {
-		"radio_name": "Radio 3",
-		"image": "assets/radio_3.jpg",
-		"image_flag": "assets/radio_3_flag.png",
-		"id": "radio_3",
-		"shoutcast_url": "http://icestreaming.rai.it/3.mp3",
-		"format": "audio/mp3"
+		"radioStation": {
+			"radio_name": "Radio 3",
+			"image": "assets/radio_3.jpg",
+			"image_flag": "assets/radio_3_flag.png",
+			"id": "radio_3",
+			"shoutcast_url": "http://icestreaming.rai.it/3.mp3",
+			"format": "audio/mp3"
+		},
+		"listIndex": 2
 	}
 }
