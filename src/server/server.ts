@@ -5,7 +5,8 @@ import dgram from 'dgram'
 import path from 'path'
 import { getAllRadioStations, setLastPlayed } from "./controllers/radio";
 import { getIpAddress } from './controllers/network';
-import { RadioStation } from './models/radio_models'
+import { RadioStationX } from './models/radio_models'
+
 
 //***** DGRAM UDP DISCOVERY */
 const udpSocket = dgram.createSocket('udp4');
@@ -34,7 +35,7 @@ app.use(bodyParser.json({ type: 'application/json', limit: '10120kb' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text({ limit: '10120kb' }));
 
-app.use(express.static('src/client'))
+app.use(express.static(path.join(__dirname, '../client')))
 
 app.get('/', (_, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
@@ -47,9 +48,9 @@ app.post('/play', (_,res) => {
 
 app.post('/play_channel', async (req,res) => {
 
-    const radioStation = JSON.parse(req.body ?? '{}');
-    io.emit('play_channel', req.body);
-    await setLastPlayed(radioStation);
+    const radioStationX : RadioStationX = JSON.parse(req.body ?? '{}');
+    io.emit('play_channel', JSON.stringify(radioStationX.radioStation));
+    await setLastPlayed(radioStationX);
     res.status(200).send();
 })
 
@@ -59,7 +60,7 @@ app.post('/pause', (_,res) => {
 })
 
 app.post('/requestPlaylist', async (_,res) => {
-    const radioStations = await getAllRadioStations();    
+    const radioStations = await getAllRadioStations();  
     res.status(200).json(radioStations);
 })
 

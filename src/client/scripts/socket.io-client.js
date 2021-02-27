@@ -31,7 +31,7 @@
                 console.log(errorThrown);
             },
             success: (data) =>  {
-                updateChannelInfo(data.last_played);
+                updateChannelInfo(data.last_played.radioStation);
                 data.shoutcast.forEach(playlist_element => {
                     const dlElement = $("<li></li>");
                     dlElement.attr({"id": playlist_element.id, "class": "list-group-item"});
@@ -39,7 +39,7 @@
                     dlElement.html(playlist_element.radio_name);
                     $("#station-list").append(dlElement);
                 });
-                $(`#${data.last_played.id}`).addClass("active");
+                $(`#${data.last_played.radioStation.id}`).addClass("active");
             }
         })
     });
