@@ -1,6 +1,5 @@
 import {readJson, writeJson} from '../common/json-load'
-import { PlayList, RadioStation, RadioStationX } from '../models/radio_models';
-import streamTitle from './radio_metadata';
+import { PlayList, RadioStationX } from '../models/radio_models';
 import path from 'path';
 
 const _jsonConfigPath = '../static/radio-stations.json';
@@ -19,8 +18,5 @@ export async function setLastPlayed(lastPlayed: RadioStationX) :Promise<void>{
 
 
 export async function getRadioMetaData(url: string, type: string) : Promise<string | undefined>{
-    return streamTitle({
-        url: url,
-        type: type
-    });
+    return undefined;
 }
