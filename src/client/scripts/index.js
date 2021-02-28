@@ -13,18 +13,23 @@ const onPlayClick = function() {
 }
 
 const onPlayChannel = function(channel) {
-	let player = $("#music-source");	
-	player
-		.attr({src: channel.shoutcast_url, type: channel.format})
-		.detach()
-		.appendTo($("#music"));
+	setPlayerUri(channel)	
 	music.pause();
 	music.load();
 	updateChannelInfo(channel);
 	music.oncanplaythrough = onPlayClick();
 }
 
+const setPlayerUri = function(channel) {
+	let player = $("#music-source");	
+	player
+		.attr({src: channel.shoutcast_url, type: channel.format})
+		.detach()
+		.appendTo($("#music"));
+}
+
 const updateChannelInfo = function(info){
+	setPlayerUri(info);
 	$("#radio-name").html(info.radio_name);
 	$("#program-name").html(info.program_name);
 	$("#radio-logo").attr("src", info.image);
