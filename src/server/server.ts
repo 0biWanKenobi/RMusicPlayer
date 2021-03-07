@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import http from 'http'
 import dgram from 'dgram'
 import path from 'path'
@@ -31,9 +30,9 @@ const io = require('socket.io')(server);
 const PORT = 8000;
 
 
-app.use(bodyParser.json({ type: 'application/json', limit: '10120kb' }));
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text({ limit: '10120kb' }));
+app.use(express.json({ type: 'application/json', limit: '10120kb' }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.text({ limit: '10120kb' }));
 
 app.use(express.static(path.join(__dirname, '../client')))
 
@@ -42,15 +41,15 @@ app.get('/', (_, res) => {
 });
 
 app.post('/play', (_,res) => {
-    io.emit('play'); 
+    io.emit('play');
     res.status(200).send();
 })
 
 app.post('/play_channel', async (req,res) => {
 
-    const radioStationX : RadioStationX = JSON.parse(req.body ?? '{}');
-    io.emit('play_channel', JSON.stringify(radioStationX.radioStation));
-    await setLastPlayed(radioStationX);
+    const nowPlaying: RadioStationX = JSON.parse(req.body ?? '{}');
+    io.emit('play_channel', JSON.stringify(nowPlaying.radioStation));
+    await setLastPlayed(nowPlaying);
     res.status(200).send();
 })
 

@@ -5,7 +5,6 @@
   "author": "Obi",
   "dependencies": {
     "axios": "^0.21.1",
-    "body-parser": "^1.19.0",
     "dgram": "^1.0.1",
     "express": "^4.17.1",
     "node-internet-radio": "^0.2.1",
