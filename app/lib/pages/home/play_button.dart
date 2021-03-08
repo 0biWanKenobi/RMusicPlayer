@@ -20,9 +20,12 @@ class PlayButton extends HookWidget {
   Widget build(BuildContext context) {
     final connected = useProvider(connectionStatusProvider.state);
     final playing = useProvider(radioControlProvider.state);
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: connected ? () async => await _onPress(context) : null,
-      color: Theme.of(context).primaryColor,
+      style: ElevatedButton.styleFrom(
+        primary: Theme.of(context).primaryColor,
+        shape: CircleBorder(),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(2.0),
         child: Icon(
@@ -31,7 +34,6 @@ class PlayButton extends HookWidget {
           color: Theme.of(context).colorScheme.onPrimary,
         ),
       ),
-      shape: CircleBorder(),
     );
   }
 }

@@ -34,17 +34,19 @@ class PreviousButton extends HookWidget {
     final radioService = useProvider(radioControlProvider);
     final enabledColor = Theme.of(context).colorScheme.primary;
     final disabledColor = Colors.grey;
-    return FlatButton(
-      height: 40,
+    return TextButton(
       onPressed: buttonEnabled
           ? () async => await _onPress(context, radioService)
           : null,
       child: Icon(Icons.skip_previous,
           size: 38, color: buttonEnabled ? enabledColor : disabledColor),
-      shape: RoundedRectangleBorder(
+      style: TextButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        side: BorderSide(color: buttonEnabled ? enabledColor : disabledColor),
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.0),
-          side:
-              BorderSide(color: buttonEnabled ? enabledColor : disabledColor)),
+        ),
+      ),
     );
   }
 }

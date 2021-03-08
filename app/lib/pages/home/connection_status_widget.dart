@@ -24,11 +24,13 @@ class ConnectionStatusWidget extends HookWidget {
         final connectionIsAlive = watch(connectionStatusProvider.state);
         return remoteConnectionAsyncStatus.map(
             data: (connected) => connected.value && connectionIsAlive
-            data: (connected) => connected.value
-                ? Text('connected to $ip', style: textStyle)
-                : RaisedButton(
-                    child: Text('Try again', style: textStyle),
+                ? Text('Connesso a $ip', style: textStyle)
+                : ElevatedButton(
+                    child: Text('Riprova', style: textStyle),
                     onPressed: () async => await _tryToConnect(context),
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.blue.shade300,
+                    ),
                   ),
             loading: (_) => child,
             error: (_) => Text(_.error.toString(), style: textStyle));
