@@ -7,7 +7,6 @@
     "axios": "^0.21.1",
     "dgram": "^1.0.1",
     "express": "^4.17.1",
-    "node-internet-radio": "^0.2.1",
     "socket.io": "^3.1.1",
     "super-trailing-slash": "^1.0.2"
   },
