@@ -1,3 +1,4 @@
+import 'package:app/providers/connection_status_provider.dart';
 import 'package:app/providers/remote_device_ip_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,7 +21,9 @@ class ConnectionStatusWidget extends HookWidget {
       builder: (_, watch, child) {
         final remoteConnectionAsyncStatus = watch(remoteConnectionProvider);
         final ip = watch(remoteIpProvider.state);
+        final connectionIsAlive = watch(connectionStatusProvider.state);
         return remoteConnectionAsyncStatus.map(
+            data: (connected) => connected.value && connectionIsAlive
             data: (connected) => connected.value
                 ? Text('connected to $ip', style: textStyle)
                 : RaisedButton(

@@ -1,5 +1,5 @@
+import 'package:app/providers/connection_status_provider.dart';
 import 'package:app/providers/radio_control_provider.dart';
-import 'package:app/providers/remote_device_ip_provider.dart';
 import 'package:flutter/foundation.dart' show Key;
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -18,7 +18,7 @@ class PlayButton extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final connected = useProvider(remoteIpProvider.state) != null;
+    final connected = useProvider(connectionStatusProvider.state);
     final playing = useProvider(radioControlProvider.state);
     return RaisedButton(
       onPressed: connected ? () async => await _onPress(context) : null,

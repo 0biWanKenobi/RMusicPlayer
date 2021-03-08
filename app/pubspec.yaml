@@ -21,6 +21,7 @@ dependencies:
   hooks_riverpod: ^0.12.4
   http: ^0.12.2
   local_ip: ^0.0.2
+  socket_io_client: ^2.0.0-beta.3
   udp: ^3.0.3
 
 dev_dependencies:

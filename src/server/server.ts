@@ -17,8 +17,8 @@ udpSocket.on('listening', () => {
 
 udpSocket.on('message', (msg: Uint8Array, rinfo: {address: string, family: string, port: number, size: number}) => {
     console.log(`Received UDP message "${msg.toString()}" from ${rinfo.address}:${rinfo.port}`);
-
-    udpSocket.send('remote_radio', 8085, rinfo.address)
+    if(msg != null && msg.toString() == 'remote_controller_client')
+        udpSocket.send('remote_radio', 8085, rinfo.address)
   });
 
 udpSocket.bind(8082);
@@ -26,7 +26,12 @@ udpSocket.bind(8082);
 //***** EXPRESS CONFIGURATION */
 const app = express();
 const server = new http.Server(app);
-const io = require('socket.io')(server);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
+  });
 const PORT = 8000;
 
 

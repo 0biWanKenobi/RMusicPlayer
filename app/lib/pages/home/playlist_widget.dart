@@ -1,5 +1,6 @@
 import 'package:app/models/radiostation.dart';
 import 'package:app/models/radiostation_x.dart';
+import 'package:app/providers/connection_status_provider.dart';
 import 'package:app/providers/radio_control_provider.dart'
     show radioControlProvider, userSelectedRadioProvider;
 import 'package:app/providers/remote_device_ip_provider.dart';
@@ -12,17 +13,26 @@ const _deviceOffline =
 const _loading = "Caricamento lista radio..";
 const _error = "Errore di connessione. Lista radio non disponibile.";
 
+final canShowPlaylistProvider = Provider<AsyncValue<bool>>((ref) {
+  final connected = ref.watch(remoteConnectionProvider).data?.value ?? false;
+  final connectionAlive = ref.watch(connectionStatusProvider.state);
+  return AsyncValue.data(connectionAlive && connected);
+});
+
 class PlaylistWidget extends HookWidget {
   const PlaylistWidget({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final connected = useProvider(remoteConnectionProvider);
+    final connected = useProvider(canShowPlaylistProvider);
     return connected.map(
-      data: (result) =>
-          result.value ? _RadioListWidget() : const Text(_deviceOffline),
+      data: (result) => result.value
+          ? _RadioListWidget()
+          : Center(
+              child: const Text(_deviceOffline, textAlign: TextAlign.center)),
       loading: (_) => Center(child: const Text(_loading)),
-      error: (_) => Center(child: const Text(_error)),
+      error: (_) =>
+          Center(child: const Text(_error, textAlign: TextAlign.center)),
     );
   }
 }
